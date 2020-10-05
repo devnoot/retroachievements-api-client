@@ -5,7 +5,7 @@ interface Game {
   id: number
   console: Console
   title: string
-  iconImage: string
+  imageIcon: string
   gameIcon?: string
   imageTitle?: string
   imageInGame?: string
@@ -23,4 +23,14 @@ interface Game {
   achievements?: Achievement[]
 }
 
-export { Game }
+interface RecentlyPlayedGame extends Game {
+  lastPlayed: string
+  vote: string
+  achievements: {
+    possibleScore: number
+    numAchieved: number
+    scoreAchieved: number
+  }
+}
+
+export { Game, RecentlyPlayedGame }
