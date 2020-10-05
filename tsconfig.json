@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "esnext",
-    "lib": ["ESNext"],
+    "module": "commonjs",
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
     "allowJs": false,
     "sourceMap": true,
     "strict": true,
@@ -15,14 +18,22 @@
     "moduleResolution": "node",
     "baseUrl": "./lib",
     "paths": {
-      "~/*": ["./*"]
+      "~/*": [
+        "./*"
+      ]
     },
-    "typeRoots": ["node_modules/@types"],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["lib/**/*"],
-  "exclude": ["node_modules"]
+  "include": [
+    "lib/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
