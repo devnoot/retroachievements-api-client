@@ -14,7 +14,7 @@ interface Game {
   developer?: string
   genre?: string
   released?: string
-  numPossibleAchievements: number
+  numPossibleAchievements?: number
   genre?: string
   flags?: any
   numAchievements?: number

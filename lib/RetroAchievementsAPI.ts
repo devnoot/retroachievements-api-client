@@ -15,6 +15,52 @@ class RetroAchievementsAPI {
     this._apiBaseURL = 'https://retroachievements.org/API/'
   }
 
+  async getGameInfo(gameId: number): Promise<Game> {
+    try {
+      const url = new URL('API_GetGame.php', this._apiBaseURL)
+      url.searchParams.set('z', this._apiUsername)
+      url.searchParams.set('y', this._apiKey)
+      url.searchParams.set('i', gameId.toString())
+      const response = await fetch(url.toString())
+      const {
+        Title: title,
+        ConsoleID,
+        ConsoleName,
+        Flags: flags,
+        ImageIcon: imageIcon,
+        GameIcon: gameIcon,
+        ImageTitle: imageTitle,
+        ImageIngame: imageInGame,
+        ImageBoxArt: imageBoxArt,
+        Publisher: publisher,
+        Developer: developer,
+        Genre: genre,
+        Released: released,
+      } = await response.json()
+
+      return {
+        id: gameId,
+        title,
+        console: {
+          id: +ConsoleID,
+          name: ConsoleName,
+        },
+        flags,
+        imageIcon,
+        imageTitle,
+        imageInGame,
+        imageBoxArt,
+        publisher,
+        developer,
+        genre,
+        gameIcon,
+        released,
+      }
+    } catch (e) {
+      return e
+    }
+  }
+
   async getGamesForConsole(consoleId: number): Promise<Game[]> {
     try {
       const url = new URL('API_GetGameList.php', this._apiBaseURL)

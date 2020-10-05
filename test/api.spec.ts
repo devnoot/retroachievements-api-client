@@ -29,8 +29,17 @@ describe('Test api handler class', () => {
       'noot',
     )
 
-    const data = await client.getGamesForConsole(4)
+    await client.getGamesForConsole(4)
+  })
 
-    console.log(data)
+  it('Should get game info for a game', async () => {
+    const client = new RetroAchievementsAPI(
+      'WlTIDmee2lK0Z0EAIeBexOr0AKvXd1qF',
+      'noot',
+    )
+
+    const res = await client.getGameInfo(1)
+
+    console.log(res)
   })
 })
