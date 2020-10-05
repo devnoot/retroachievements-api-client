@@ -8,13 +8,20 @@ describe('Test api handler class', () => {
       'WlTIDmee2lK0Z0EAIeBexOr0AKvXd1qF',
       'noot',
     )
-
     const rankAndScore = await client.getUserRankAndScore('noot')
-
-    console.log(rankAndScore)
-
     rankAndScore.should.be.a('object')
     rankAndScore.should.have.property('Score')
     rankAndScore.should.have.property('Rank')
+  })
+
+  it("Should get a user's recently played games", async () => {
+    const client = new RetroAchievementsAPI(
+      'WlTIDmee2lK0Z0EAIeBexOr0AKvXd1qF',
+      'noot',
+    )
+
+    const recent = await client.getUserRecentlyPlayed('noot', 0, 5)
+
+    console.log(recent)
   })
 })
